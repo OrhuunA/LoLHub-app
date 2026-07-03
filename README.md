@@ -26,28 +26,6 @@ LoLHub is a modern, Electron-based desktop application designed to streamline th
 
 > **Note**: Offline Mode has been deprecated and removed.
 
-## Installation & Usage
-
-### Prerequisites
-- Node.js (v18 or higher)
-- League of Legends installed
-
-### Setup
-1. Clone the repository.
-2. Install dependencies:
-   ```bash
-   cd electron-app
-   npm install
-   ```
-
-### Running the App
-- **Method 1 (Recommended)**: Double-click `start_app.bat` in the root folder. This automatically requests Admin privileges (required for Client interaction) and starts the app.
-- **Method 2 (Manual)**:
-   ```bash
-   cd electron-app
-   npm run dev
-   ```
-
 ## Technologies
 - **Electron**: Cross-platform desktop framework.
 - **React + TypeScript**: Modern, type-safe UI development.
