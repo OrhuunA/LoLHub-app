@@ -1,36 +1,49 @@
-# LoLHub - Advanced League of Legends Account Manager
+# LoLHub - League of Legends Companion App
 
-LoLHub is a modern, Electron-based desktop application designed to streamline the management of multiple League of Legends accounts. It provides seamless auto-login, rank tracking, inventory visualization (Skins & Champions), and game automation tools.
+LoLHub has two independent parts:
+
+**1. Riot Games API integration** — read-only stats and analytics for your own
+tracked accounts (rank, mastery, match history, pre-game lobby lookup). This is
+the part covered by our Riot Developer Portal application; all calls go
+directly from the desktop app to Riot's official endpoints.
+
+**2. Local League Client (LCU) convenience tools** — quality-of-life features
+that talk only to your own local League Client process (127.0.0.1), not to
+Riot's API: saved-profile switching, optional ready-check/champion-select
+automation, and settings backup. These do not use the Riot Games API and are
+outside the scope of our production API key request.
 
 ## Features
 
-### 🔐 Account Management
-- **Auto Login**: Switch accounts instantly with a single click, bypassing the Riot Client login screen.
-- **Secure Storage**: Account credentials are encrypted locally using `crypto` APIs.
-- **Stats Tracking**: Automatically tracks Rank, LP, Blue Essence, and RP for all accounts.
+### 📊 Stats & Analytics (via Riot Games API)
+- Rank history, LP trend, and current-form indicator
+- Champion mastery and match history breakdown
+- Pre-game/in-game lobby lookup (rank, recent form, champion win-rate)
 
-### 🎨 Visual & Inventory (DDragon Integration)
-- **Champion Grid**: View all owned champions with smart search filtering and high-quality images.
-- **Skin Showcase**: Displays your owned skins.
-- **Dynamic Backgrounds**: Account cards feature random skin backgrounds from your inventory.
+### 🔐 Local Account Tools (League Client only — no Riot API involved)
+- Switch between your own saved profiles without retyping credentials each time
+- Optional per-profile convenience settings for ready-check and champion select
+- Config Sync: back up and restore your keybinds/interface settings across profiles
 
-### 🛠️ Game Tools
-- **Auto Queue**: Automatically accept match prompts.
-- **Auto Pick/Ban**: Pre-select your favorite champions and ban unwanted ones automatically.
-- **Config Sync**: Backup and Restore your game settings (Keybinds, Interface, etc.) to apply them across different accounts instantly.
+**Note:** these local tools are provided as convenience features only. If Riot
+Games determines that any of them do not comply with their Third-Party
+Application policies, they will be modified or removed to stay compliant —
+they are independent of, and not required by, the Riot API integration above.
+
+### 🎨 Visual & Inventory
+- Champion grid, skin showcase, dynamic account-card backgrounds (DDragon)
 
 ### 🔌 Connectivity & Servers
-- **New Regions**: Support for **Russia (RU)**, **Middle East (ME)**, and **Japan (JP)** added.
-- **Data Portability**: Export and Import your accounts to easily transfer data between devices or backup your list.
-- **Privacy First**: All data is stored locally on your machine.
-
-> **Note**: Offline Mode has been deprecated and removed.
+- Support for **Russia (RU)**, **Middle East (ME)**, and **Japan (JP)**
+- Export/import your account list to transfer or back it up
+- All data is stored locally on your machine
 
 ## Technologies
 - **Electron**: Cross-platform desktop framework.
 - **React + TypeScript**: Modern, type-safe UI development.
 - **TailwindCSS**: Beautiful, responsive styling.
-- **LCU API**: Direct integration with the League Client Update API for real-time control.
+- **Riot Games API**: Account-V1, Summoner-V4, League-V4, Champion-Mastery-V4, Match-V5, Spectator-V5.
+- **League Client Update (LCU) API**: local-only, powers the convenience tools described above.
 
 ## Disclaimer
 This project is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
